@@ -1,0 +1,24 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getBlogs, getBlog } from "../../lib/microcms";
+import { BlogDetailPageContent } from "../../app/pages/BlogDetailPageContent";
+
+export async function getStaticPaths() {
+    const response = await getBlogs({ limit: 100 });
+    return response.contents.map((blog) => ({
+        params: { blogId: blog.id },
+    }));
+}
+
+const { blogId } = Astro.params;
+const blog = await getBlog(blogId as string);
+---
+
+<Layout
+    title={`${blog.title} - Corporate Design`}
+    description={blog.excerpt}
+    image={blog.thumbnail?.url}
+    type="article"
+>
+    <BlogDetailPageContent blog={blog} client:only="react" />
+</Layout>

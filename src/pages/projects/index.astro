@@ -1,0 +1,11 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getProjects } from "../../lib/microcms";
+import { ProjectsPageContent } from "../../app/pages/ProjectsPageContent";
+
+const { contents: projects } = await getProjects();
+---
+
+<Layout title="Selected Works - Corporate Design">
+    <ProjectsPageContent projects={projects} client:only="react" />
+</Layout>

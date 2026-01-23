@@ -1,0 +1,24 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getProjects, getProject } from "../../lib/microcms";
+import { ProjectDetailPageContent } from "../../app/pages/ProjectDetailPageContent";
+
+export async function getStaticPaths() {
+    const response = await getProjects({ limit: 100 });
+    return response.contents.map((project) => ({
+        params: { projectId: project.id },
+    }));
+}
+
+const { projectId } = Astro.params;
+const project = await getProject(projectId as string);
+---
+
+<Layout
+    title={`${project.title} - Corporate Design`}
+    description={project.description}
+    image={project.thumbnail?.url}
+    type="article"
+>
+    <ProjectDetailPageContent project={project} client:only="react" />
+</Layout>

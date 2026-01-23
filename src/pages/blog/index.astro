@@ -1,0 +1,11 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getBlogs } from "../../lib/microcms";
+import { BlogPageContent } from "../../app/pages/BlogPageContent";
+
+const { contents: blogs } = await getBlogs();
+---
+
+<Layout title="Blog - Corporate Design">
+    <BlogPageContent blogs={blogs} client:only="react" />
+</Layout>

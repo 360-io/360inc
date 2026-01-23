@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { ProductDetailPageContent } from "../../app/pages/ProductDetailPageContent";
+import { getProducts, getProduct } from "../../lib/microcms";
+
+export async function getStaticPaths() {
+    const response = await getProducts({ fields: ["id"] });
+    return response.contents.map((content) => ({
+        params: {
+            productId: content.id,
+        },
+    }));
+}
+
+const { productId } = Astro.params;
+const product = await getProduct(productId as string);
+---
+
+<Layout
+    title={`${product.title} - Corporate Design`}
+    description={product.description}
+    image={product.imageUrl}
+    type="article"
+>
+    <ProductDetailPageContent client:only="react" product={product} />
+</Layout>

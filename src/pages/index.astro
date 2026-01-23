@@ -1,0 +1,13 @@
+---
+import Layout from "../layouts/Layout.astro";
+import App from "../app/App";
+---
+
+<Layout
+    title="Corporate Website Design"
+    description="株式会社360Inc.は、最先端のデジタルソリューションを提供するクリエイティブエージェンシーです。"
+>
+    <main>
+        <App client:only="react" />
+    </main>
+</Layout>
