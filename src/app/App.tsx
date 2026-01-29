@@ -56,14 +56,14 @@ export default function App() {
               <ProductSection
                 title="AI Integration Service"
                 description="人の思考に寄り添うAIが、ビジネスの新たな可能性を拓きます。単なる自動化ではなく、想いをカタチにするパートナーとして、持続可能な未来を共創します。"
-                imageUrl="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1932&ixlib=rb-4.0.3"
+                imageUrl="/images/360inc_ai01.jpg"
                 linkUrl="/products/product-1"
               />
 
               <ProductSection
                 title="XR Development"
                 description="現実と想像の境界を溶かす、没入型のデジタル体験を。360度の視界で「想い」を伝え、時間や場所を超えた新しい「つながり」を創造します。"
-                imageUrl="https://images.unsplash.com/photo-1622979135225-d2ba269fb1bd?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3"
+                imageUrl="/images/360inc_xr00.jpg"
                 reversed
                 linkUrl="/products/xr-development"
               />
@@ -88,7 +88,7 @@ export default function App() {
               <ProductSection
                 title="Content Marketing"
                 description="共感を呼び、人と人の絆を深めるコンテンツを。データを超えた「想い」の共有を通じて、永く愛されるファンコミュニティを育みます。"
-                imageUrl="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3"
+                imageUrl="/images/360inc_content02.jpg"
                 linkUrl="/products/content-marketing"
               />
 

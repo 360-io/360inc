@@ -373,7 +373,7 @@ const MOCK_PRODUCTS: Product[] = [
                 <li><strong>Continuous Improvement:</strong> 運用開始後のモニタリングと継続的な精度向上</li>
             </ul>
         `,
-        imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1932&ixlib=rb-4.0.3",
+        imageUrl: "/images/360inc_ai00.jpg",
     },
     {
         id: "xr-development",
@@ -397,7 +397,7 @@ const MOCK_PRODUCTS: Product[] = [
                 <li><strong>Business Solutions:</strong> 建築ビジュアライゼーション、教育訓練、遠隔支援など、ビジネス課題を解決する実用的なXR導入</li>
             </ul>
         `,
-        imageUrl: "https://images.unsplash.com/photo-1622979135225-d2ba269fb1bd?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3",
+        imageUrl: "/images/360inc_xr03.jpg",
     },
     {
         id: "product-2",
@@ -469,7 +469,7 @@ const MOCK_PRODUCTS: Product[] = [
                 <li><strong>Data-Driven Analysis:</strong> 定量データに基づいた効果測定と改善サイクル（PDCA）の徹底</li>
             </ul>
         `,
-        imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3",
+        imageUrl: "/images/360inc_content01.jpg",
     },
     {
         id: "digital-education",
