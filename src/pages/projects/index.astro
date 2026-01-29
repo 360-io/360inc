@@ -6,6 +6,6 @@ import { ProjectsPageContent } from "../../app/pages/ProjectsPageContent";
 const { contents: projects } = await getProjects();
 ---
 
-<Layout title="Selected Works - Corporate Design">
+<Layout title="Selected Works">
     <ProjectsPageContent projects={projects} client:only="react" />
 </Layout>

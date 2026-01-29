@@ -6,6 +6,6 @@ import { BlogPageContent } from "../../app/pages/BlogPageContent";
 const { contents: blogs } = await getBlogs();
 ---
 
-<Layout title="Blog - Corporate Design">
+<Layout title="Blog">
     <BlogPageContent blogs={blogs} client:only="react" />
 </Layout>
