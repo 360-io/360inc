@@ -8,6 +8,7 @@ import { WorkflowDiagram } from "../components/WorkflowDiagram";
 import { MarketingFeatures } from "../components/MarketingFeatures";
 import { EducationFeatures } from "../components/EducationFeatures";
 import { FaqSection } from "../components/FaqSection";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 const aiFaqs = [
     {
@@ -165,6 +166,41 @@ export function ProductDetailPageContent({ product }: Props) {
                 {product.id === "product-1" && (
                     <>
                         <WorkflowDiagram />
+
+                        {/* AX Transformation Link */}
+                        <div className="my-24 relative group">
+                            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-3xl blur opacity-25 group-hover:opacity-60 transition duration-500" />
+                            <div className="relative bg-[#0B1120] ring-1 ring-white/10 rounded-3xl p-8 md:p-12 overflow-hidden">
+                                <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl pointer-events-none" />
+
+                                <div className="flex flex-col md:flex-row items-center justify-between gap-8 h-full">
+                                    <div className="flex-1 text-center md:text-left">
+                                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-cyan-400 text-sm font-semibold mb-6">
+                                            <Sparkles className="w-4 h-4 text-yellow-400" />
+                                            <span>Beyond DX</span>
+                                        </div>
+                                        <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400">Welcome to AX</span><br />
+                                            <span className="text-xl md:text-2xl text-gray-400 font-normal mt-2 block">AI変革 × 国策補助金</span>
+                                        </h3>
+                                        <p className="text-gray-300 leading-relaxed mb-8 md:mb-0 max-w-lg mx-auto md:mx-0">
+                                            単なるツール導入（DX）では終わらない。<br />
+                                            経営判断を自動化する「AX」へ、<br className="hidden md:inline" />
+                                            最大80%オフで移行できるチャンスです。
+                                        </p>
+                                    </div>
+
+                                    <a href="/ax-transformation" className="shrink-0 group/btn relative inline-flex items-center justify-center px-8 py-5 bg-white text-black font-bold rounded-full text-lg overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.4)]">
+                                        <span className="relative z-10 flex items-center gap-2">
+                                            AXの詳細を見る
+                                            <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                                        </span>
+                                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-300 via-blue-200 to-purple-200 opacity-0 group-hover/btn:opacity-100 transition-opacity" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
                         <FaqSection customFaqs={aiFaqs} title="AI Solutions FAQ" />
                     </>
                 )}

@@ -1,0 +1,13 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { ItSubsidyPageContent } from "../app/pages/ItSubsidyPageContent";
+---
+
+<Layout
+    title="IT導入補助金サポート | 株式会社360Inc."
+    description="手出しを抑えて、攻めのDXを。IT導入補助金の完全成功報酬型サポート。LINE/Instagram自動化から会計ソフトまで、貴社に最適なツール導入を支援します。"
+>
+    <main>
+        <ItSubsidyPageContent client:only="react" />
+    </main>
+</Layout>
