@@ -13,15 +13,18 @@ import {
     FileText,
     Target,
     Building2,
-    ChevronRight
+    ChevronRight,
+    Bot
 } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Label } from "recharts";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { BackToTopButton } from "../components/BackToTopButton";
+import { BackLinkButton } from "../components/BackLinkButton";
 
 export function ItSubsidyPageContent() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [activeTab, setActiveTab] = useState<"accounting" | "line" | "instagram">("accounting");
+    const [activeTab, setActiveTab] = useState<"ai" | "accounting" | "line" | "instagram">("ai");
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -64,6 +67,12 @@ export function ItSubsidyPageContent() {
     }, []);
 
     const tools = {
+        ai: {
+            title: "AI導入・業務自動化",
+            icon: <Bot className="w-12 h-12 text-[#0ea5e9]" />,
+            desc: "ChatGPT連携チャットボットや、RPAによる定型業務の自動化。人手不足を補うだけでなく、24時間365日稼働する「デジタル社員」を採用できます。",
+            tags: ["AIチャットボット", "RPA", "業務効率化"]
+        },
         accounting: {
             title: "会計・インボイス制度対応",
             icon: <Receipt className="w-12 h-12 text-[#fbbf24]" />,
@@ -95,8 +104,8 @@ export function ItSubsidyPageContent() {
             answer: "当社のプロフェッショナルが申請書の作成から提出までを徹底サポートします。過去の採択実績に基づいたノウハウで、高確率での採択を目指しますが、審査があるため100%の保証はできません。しかし、不採択の場合でも再申請のサポートを行っています。"
         },
         {
-            question: "ITツールに詳しくなくても大丈夫ですか？",
-            answer: "はい、大丈夫です。導入前の選定から、導入後の操作説明・運用サポートまで一貫して行いますので、ITに詳しくない方でも安心してご利用いただけます。"
+            question: "AIツールに詳しくなくても大丈夫ですか？",
+            answer: "はい、大丈夫です。導入前の選定から、導入後の操作説明・運用サポートまで一貫して行いますので、AIやITに詳しくない方でも安心してご利用いただけます。"
         },
         {
             question: "着手金は必要ですか？",
@@ -104,7 +113,7 @@ export function ItSubsidyPageContent() {
         },
         {
             question: "どのような業種でも申請できますか？",
-            answer: "はい、飲食、建設、医療、小売、サービス業など、幅広い業種で申請可能です。御社の事業内容に合わせた最適なツールと活用計画をご提案します。"
+            answer: "はい、飲食、建設、医療、小売、サービス業など、幅広い業種で申請可能です。AI導入により、あらゆる業種の生産性向上が期待できます。"
         }
     ];
 
@@ -134,15 +143,15 @@ export function ItSubsidyPageContent() {
                     </motion.div>
 
                     <h1 className="hero-text text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 leading-[1.1]">
-                        手出しを抑えて、<br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-[#fbbf24]">
-                            攻めのDXを。
+                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-cyan-200 to-white">デジタル化・AI補助金</span>
+                        <span className="block mt-2 text-white text-4xl md:text-6xl">
+                            で、攻めの経営を。
                         </span>
                     </h1>
 
                     <p className="hero-text text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
                         煩雑な申請手続きはプロにお任せ。<br className="hidden md:block" />
-                        あなたのビジネスを加速させる、最適なITツール導入を支援します。
+                        AI導入による業務自動化で、あなたのビジネスを加速させます。
                     </p>
 
                     <motion.div
@@ -176,13 +185,13 @@ export function ItSubsidyPageContent() {
                             },
                             {
                                 icon: <TrendingUp className="w-10 h-10" />,
-                                title: "SNS×自動化で売上UP",
-                                desc: "単なるツール導入（L Message等）だけでなく、集客から成約までの導線設計を含めた「売れる仕組み」を構築します。"
+                                title: "AI×自動化で売上UP",
+                                desc: "単なるツール導入（会計ソフト等）だけでなく、AIや集客ツールを活用した「売れる仕組み」を構築します。"
                             },
                             {
                                 icon: <Building2 className="w-10 h-10" />,
                                 title: "あらゆる業種に対応",
-                                desc: "飲食、建設、医療など、各業界特有の課題を理解した上で、最適な補助金活用プランをご提案します。"
+                                desc: "飲食、建設、医療など、各業界特有の課題を理解した上で、最適なAI・デジタル化プランをご提案します。"
                             }
                         ].map((feature, idx) => (
                             <div key={idx} className="feature-card bg-white/5 backdrop-blur-lg border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-colors">
@@ -210,7 +219,7 @@ export function ItSubsidyPageContent() {
                             <div className="flex flex-wrap gap-4">
                                 <div className="stat-item bg-[#1e3a8a] px-6 py-3 rounded-xl border border-white/10 flex items-center gap-3">
                                     <ShieldCheck className="text-[#fbbf24]" />
-                                    <span className="font-bold">IT導入支援事業者 認定</span>
+                                    <span className="font-bold">支援事業者 認定</span>
                                 </div>
                                 <div className="stat-item bg-[#1e3a8a] px-6 py-3 rounded-xl border border-white/10 flex items-center gap-3">
                                     <Target className="text-[#fbbf24]" />
@@ -260,8 +269,8 @@ export function ItSubsidyPageContent() {
                     </div>
 
                     <div className="max-w-4xl mx-auto">
-                        <div className="flex justify-center mb-12 gap-2 md:gap-4">
-                            {(['accounting', 'line', 'instagram'] as const).map((tab) => (
+                        <div className="flex justify-center mb-12 gap-2 md:gap-4 flex-wrap">
+                            {(['ai', 'accounting', 'line', 'instagram'] as const).map((tab) => (
                                 <button
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
@@ -270,6 +279,7 @@ export function ItSubsidyPageContent() {
                                         : "bg-white/10 text-gray-400 hover:bg-white/20"
                                         }`}
                                 >
+                                    {tab === 'ai' && "AI・自動化"}
                                     {tab === 'accounting' && "会計・インボイス"}
                                     {tab === 'line' && "LINE自動化"}
                                     {tab === 'instagram' && "Instagram集客"}
@@ -313,7 +323,7 @@ export function ItSubsidyPageContent() {
                 <FaqSection
                     customFaqs={faqs}
                     title="FAQ"
-                    subtitle="IT導入補助金に関するよくあるご質問"
+                    subtitle="デジタル化・AI補助金に関するよくあるご質問"
                 />
 
                 {/* Bottom CTA */}
@@ -345,6 +355,3 @@ export function ItSubsidyPageContent() {
         </PageWrapper>
     );
 }
-
-import { BackToTopButton } from "../components/BackToTopButton";
-import { BackLinkButton } from "../components/BackLinkButton";

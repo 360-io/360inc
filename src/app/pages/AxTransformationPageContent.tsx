@@ -15,7 +15,9 @@ import {
     Scale,
     FileCheck,
     Bot,
-    ChevronDown
+    ChevronDown,
+    Sparkles,
+    FileText
 } from "lucide-react";
 import { BackToTopButton } from "../components/BackToTopButton";
 import { BackLinkButton } from "../components/BackLinkButton";
@@ -66,31 +68,40 @@ export function AxTransformationPageContent() {
 
     const subsidyData = [
         {
-            name: "IT導入補助金",
-            target: "ソフトウェア・クラウド",
+            name: "デジタル化・AI補助金",
+            target: "ソフト・クラウド導入",
             amount: "最大450万円",
             rate: "1/2 〜 4/5",
-            fit: "まずはここから",
+            fit: "業務効率化・DX推進",
             color: "from-blue-500 to-cyan-400",
             link: "/it-subsidy"
         },
         {
-            name: "省力化補助金",
-            target: "IoT機器・ロボット・券売機",
-            amount: "特定機器による",
-            rate: "1/2",
-            fit: "ハードウェアも導入したい",
-            color: "from-indigo-500 to-purple-400",
-            link: "/labor-saving-subsidy"
+            name: "小規模事業者持続化補助金",
+            target: "販路開拓・Web制作",
+            amount: "最大200万円",
+            rate: "2/3",
+            fit: "集客・ブランディング",
+            color: "from-emerald-500 to-teal-400",
+            link: "/small-business-subsidy"
         },
         {
             name: "ものづくり補助金",
-            target: "革新的なサービス開発",
-            amount: "最大1,000万円〜",
+            target: "新製品・サービス開発",
+            amount: "最大8,000万円",
             rate: "1/2 〜 2/3",
-            fit: "大規模なシステム開発",
+            fit: "革新的な事業への挑戦",
             color: "from-orange-500 to-red-400",
             link: "/manufacturing-subsidy"
+        },
+        {
+            name: "省力化補助金",
+            target: "ロボット・IoT機器",
+            amount: "最大1,500万円",
+            rate: "1/2",
+            fit: "人手不足解消・自動化",
+            color: "from-indigo-500 to-purple-400",
+            link: "/labor-saving-subsidy"
         }
     ];
 
@@ -261,7 +272,7 @@ export function AxTransformationPageContent() {
                             </p>
                         </div>
 
-                        <div className="grid lg:grid-cols-3 gap-6">
+                        <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
                             {subsidyData.map((subsidy, idx) => (
                                 <a key={idx} href={subsidy.link} className="reveal-card bg-[#0B1120] border border-white/10 rounded-3xl p-8 hover:border-white/20 hover:bg-white/5 transition-all group overflow-hidden relative block">
                                     <div className={`absolute top-0 inset-x-0 h-1 bg-gradient-to-r ${subsidy.color}`} />
@@ -288,6 +299,60 @@ export function AxTransformationPageContent() {
                                     </div>
                                 </a>
                             ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Featured Solution: RAG */}
+                <section className="py-20 px-6 relative z-10">
+                    <div className="max-w-6xl mx-auto">
+                        <div className="relative rounded-[3rem] overflow-hidden border border-cyan-500/30 bg-[#0f172a] shadow-2xl group transition-all hover:shadow-[0_0_50px_rgba(6,182,212,0.2)]">
+                            <div className="absolute inset-0 bg-grid-white/[0.05]" />
+                            <div className="absolute -top-32 -right-32 w-64 h-64 bg-cyan-500/20 rounded-full blur-[80px] group-hover:bg-cyan-500/30 transition-colors" />
+
+                            <div className="relative p-10 md:p-16 flex flex-col md:flex-row items-center gap-12">
+                                <div className="flex-1 text-left">
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/50 border border-cyan-500/30 text-cyan-400 text-xs font-bold mb-6">
+                                        <Sparkles className="w-4 h-4" />
+                                        NEW SERVICE
+                                    </div>
+                                    <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white leading-tight">
+                                        Corporate RAG <br />
+                                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Construction</span>
+                                    </h2>
+                                    <p className="text-gray-400 mb-8 text-lg leading-relaxed">
+                                        検索時間を劇的に削減。社内ドキュメントを学習したAIが、<br className="hidden lg:inline" />
+                                        あなたの会社の「専属コンサルタント」になります。
+                                    </p>
+                                    <a href="/rag-service" className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#0B1120] rounded-full font-bold hover:bg-cyan-50 transition-colors shadow-lg shadow-cyan-500/20">
+                                        詳細を見る
+                                        <ArrowRight className="w-5 h-5" />
+                                    </a>
+                                </div>
+                                <div className="flex-1 w-full max-w-sm hidden md:block">
+                                    {/* Simple Visual */}
+                                    <div className="bg-[#1e293b] rounded-2xl p-6 border border-white/10 shadow-xl relative group-hover:-translate-y-2 transition-transform duration-500">
+                                        <div className="flex items-center gap-3 mb-4 border-b border-white/10 pb-4">
+                                            <div className="w-8 h-8 rounded bg-cyan-500/20 flex items-center justify-center">
+                                                <Bot className="w-5 h-5 text-cyan-400" />
+                                            </div>
+                                            <div className="text-sm font-bold text-white">AI Assistant</div>
+                                        </div>
+                                        <div className="space-y-4">
+                                            <div className="p-3 rounded-lg bg-[#0B1120] text-gray-300 text-xs text-right ml-auto w-3/4">
+                                                先月の売上データを教えて
+                                            </div>
+                                            <div className="p-3 rounded-lg bg-cyan-900/20 text-cyan-100 text-xs w-full border border-cyan-500/20">
+                                                <div className="flex items-center gap-2 mb-2 text-cyan-400">
+                                                    <FileText className="w-3 h-3" />
+                                                    <span>Sales_Report_2025-01.xlsx</span>
+                                                </div>
+                                                先月の全社売上は1億2,500万円で、前年比115%の達成となりました...
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
