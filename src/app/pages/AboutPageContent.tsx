@@ -77,11 +77,12 @@ export function AboutPageContent() {
                             </p>
                         </div>
                     </div>
-                    <div className="w-full md:w-1/3 aspect-[3/4] bg-gray-800 rounded-2xl overflow-hidden relative">
-                        {/* Placeholder for CEO Image */}
-                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-transparent to-black/80">
-                            <span className="text-white/20 font-bold text-6xl">CEO</span>
-                        </div>
+                    <div className="w-full md:w-1/3 flex items-center justify-center relative">
+                        <img
+                            src="/images/ceo_profile.png"
+                            alt="CEO Portrait"
+                            className="w-full h-auto max-w-[300px] md:max-w-full object-contain filter drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                        />
                     </div>
                 </motion.section>
 
