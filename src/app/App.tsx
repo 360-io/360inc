@@ -32,13 +32,13 @@ export default function App() {
                 imageUrl="https://images.unsplash.com/photo-1683701251422-912fe98f2b5e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB0ZWNobm9sb2d5JTIwd29ya3NwYWNlfGVufDF8fHx8MTc2ODcyNDg1N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
               />
 
-              <div className="py-32 px-6 text-center relative z-10">
+              <div className="py-16 md:py-32 px-6 text-center relative z-10">
                 <motion.h2
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-5xl md:text-7xl font-sans font-bold tracking-tight mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 inline-block"
+                  className="text-5xl md:text-7xl font-sans font-bold tracking-tight mb-4 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500 inline-block"
                 >
                   Solutions
                 </motion.h2>

@@ -23,8 +23,8 @@ export function ProductSection({ title, description, imageUrl, reversed = false,
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
 
   return (
-    <section ref={ref} className="py-32 px-6 overflow-hidden" id="products">
-      <div className={`max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center ${reversed ? 'md:grid-flow-dense' : ''}`}>
+    <section ref={ref} className="py-16 md:py-32 px-6 overflow-hidden" id="products">
+      <div className={`max-w-7xl mx-auto grid md:grid-cols-2 gap-8 md:gap-16 items-center ${reversed ? 'md:grid-flow-dense' : ''}`}>
         <motion.div
           initial={{ opacity: 0, x: reversed ? 30 : -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -33,7 +33,7 @@ export function ProductSection({ title, description, imageUrl, reversed = false,
           className={reversed ? 'md:col-start-2' : ''}
         >
           <motion.h2
-            className="text-5xl md:text-7xl mb-8 font-sans font-bold tracking-tight leading-[1.05]"
+            className="text-5xl md:text-7xl mb-4 md:mb-8 font-sans font-bold tracking-tight leading-[1.05]"
             whileInView={{ backgroundPosition: ["0%", "100%"] }}
             transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
             style={{
@@ -82,7 +82,7 @@ export function ProductSection({ title, description, imageUrl, reversed = false,
             {videoUrl ? (
               <video
                 src={videoUrl}
-                className="w-full h-[600px] object-cover rounded-3xl shadow-2xl"
+                className="w-full h-[300px] md:h-[600px] object-cover rounded-3xl shadow-2xl"
                 autoPlay
                 muted
                 loop
@@ -92,7 +92,7 @@ export function ProductSection({ title, description, imageUrl, reversed = false,
               <ImageWithFallback
                 src={imageUrl}
                 alt={title}
-                className="w-full h-[600px] object-cover rounded-3xl shadow-2xl"
+                className="w-full h-[300px] md:h-[600px] object-cover rounded-3xl shadow-2xl"
               />
             )}
             <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-3xl opacity-0 hover:opacity-100 transition-opacity duration-500" />

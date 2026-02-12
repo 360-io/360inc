@@ -143,7 +143,7 @@ export function Hero({ title, subtitle, imageUrl }: HeroProps) {
         </div>
 
         {isSoMode ? (
-          <div className="text-2xl md:text-3xl lg:text-4xl text-white/90 font-light tracking-tight leading-relaxed">
+          <div className="text-lg md:text-3xl lg:text-4xl text-white/90 font-light tracking-tight leading-relaxed">
             {subtitle.split('\n').map((line, lineIndex) => (
               <div key={lineIndex} className="block overflow-hidden mb-4">
                 {line.split('').map((char, charIndex) => (

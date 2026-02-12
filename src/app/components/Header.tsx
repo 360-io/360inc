@@ -26,13 +26,13 @@ export function Header() {
           {/* Center: LIG Logo */}
           <a
             href="/"
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl font-black tracking-tighter"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl md:text-4xl font-black tracking-tighter"
           >
             360
           </a>
 
           {/* Right: Blog & Contact */}
-          <div className="flex items-center gap-8 text-sm font-bold tracking-wider">
+          <div className="flex items-center gap-4 md:gap-8 text-xs md:text-sm font-bold tracking-wider">
             <a href="/blog" className="hover:text-gray-300 transition-colors">Blog</a>
             <a href="/contact" className="hover:text-gray-300 transition-colors">Contact</a>
           </div>
