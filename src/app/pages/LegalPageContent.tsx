@@ -26,19 +26,19 @@ export function LegalPageContent() {
                         </div>
                         <div className="contents">
                             <dt className="font-bold text-white py-4 border-b border-white/10 md:border-none">運営統括責任者</dt>
-                            <dd className="py-4 border-b border-white/10">代表取締役 山田 太郎</dd>
+                            <dd className="py-4 border-b border-white/10">EC統括責任者 山崎 奈緒美</dd>
                         </div>
                         <div className="contents">
                             <dt className="font-bold text-white py-4 border-b border-white/10 md:border-none">所在地</dt>
-                            <dd className="py-4 border-b border-white/10">東京都渋谷区...</dd>
+                            <dd className="py-4 border-b border-white/10">奈良県桜井市粟殿1029-6</dd>
                         </div>
                         <div className="contents">
                             <dt className="font-bold text-white py-4 border-b border-white/10 md:border-none">電話番号</dt>
-                            <dd className="py-4 border-b border-white/10">03-xxxx-xxxx</dd>
+                            <dd className="py-4 border-b border-white/10">0744-48-3603</dd>
                         </div>
                         <div className="contents">
                             <dt className="font-bold text-white py-4 border-b border-white/10 md:border-none">メールアドレス</dt>
-                            <dd className="py-4 border-b border-white/10">info@example.com</dd>
+                            <dd className="py-4 border-b border-white/10">info@360inc.co.jp</dd>
                         </div>
                         <div className="contents">
                             <dt className="font-bold text-white py-4 border-b border-white/10 md:border-none">販売価格</dt>

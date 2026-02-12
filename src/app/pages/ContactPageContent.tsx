@@ -47,10 +47,14 @@ export function ContactPageContent() {
                                     defaultValue=""
                                 >
                                     <option value="" disabled className="text-gray-500 bg-gray-900">お問い合わせ項目を選択してください</option>
-                                    <option value="AI Integration Service" className="bg-gray-900">AI Integration Service について</option>
-                                    <option value="Data Analytics Platform" className="bg-gray-900">Data Analytics Platform について</option>
-                                    <option value="Consulting" className="bg-gray-900">その他コンサルティング・ご相談</option>
-                                    <option value="Other" className="bg-gray-900">その他</option>
+                                    <option value="AX・DXについて" className="bg-gray-900">AX・DXについて</option>
+                                    <option value="XRについて" className="bg-gray-900">XRについて</option>
+                                    <option value="アプリケーション開発について" className="bg-gray-900">アプリケーション開発について</option>
+                                    <option value="WEBサイトデザインについて" className="bg-gray-900">WEBサイトデザインについて</option>
+                                    <option value="コンテンツ・SNSマーケティングについて" className="bg-gray-900">コンテンツ・SNSマーケティングについて</option>
+                                    <option value="教育事業について" className="bg-gray-900">教育事業について</option>
+                                    <option value="補助金活用・コンサルタントについて" className="bg-gray-900">補助金活用・コンサルタントについて</option>
+                                    <option value="その他" className="bg-gray-900">その他</option>
                                 </select>
                                 <div className="absolute inset-y-0 right-0 flex items-center px-6 pointer-events-none text-gray-400">
                                     <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
