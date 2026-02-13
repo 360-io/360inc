@@ -28,7 +28,7 @@ export default function App() {
             <HeaderContentFade>
               <Hero
                 title="想"
-                subtitle={`人を想い　世界を想い　地球を想う\n360はデジタルで　”想”　を実現します`}
+                subtitle={`人を想い　世界を想い　宇宙を想う\n360はデジタルで　”想”　を実現します`}
                 imageUrl="https://images.unsplash.com/photo-1683701251422-912fe98f2b5e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB0ZWNobm9sb2d5JTIwd29ya3NwYWNlfGVufDF8fHx8MTc2ODcyNDg1N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
               />
 
@@ -71,7 +71,7 @@ export default function App() {
               <ProductSection
                 title="Application Development"
                 description="使う人の心を動かす、温かみのあるデジタル体験を。手に取るすべての人に寄り添い、想いが伝わるアプリケーションを開発します。"
-                imageUrl="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3"
+                imageUrl="/images/app-dev-new.png"
                 linkUrl="/products/product-2"
               />
 

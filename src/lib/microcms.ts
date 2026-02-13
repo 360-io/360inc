@@ -421,7 +421,7 @@ const MOCK_PRODUCTS: Product[] = [
                 <li><strong>User-Centric UI/UX:</strong> 徹底したユーザーリサーチに基づいた、使い心地の良いインターフェース</li>
             </ul>
         `,
-        imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3",
+        imageUrl: "/images/app-dev-new.png",
     },
     {
         id: "web-production",
