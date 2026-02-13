@@ -1,7 +1,6 @@
 import { Header } from "@/app/components/Header";
 import { Hero } from "@/app/components/Hero";
 import { ProductSection } from "@/app/components/ProductSection";
-import { FeatureGrid } from "@/app/components/FeatureGrid";
 import { Footer } from "@/app/components/Footer";
 import { ThreeBackground } from "@/app/components/ThreeBackground";
 import { ProjectSection } from "@/app/components/ProjectSection";
@@ -104,7 +103,6 @@ export default function App() {
 
               <AboutSection />
 
-              <FeatureGrid />
 
               <ProjectSection />
 
