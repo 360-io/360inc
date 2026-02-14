@@ -24,11 +24,12 @@ export function Header() {
           </button>
 
           {/* Center: LIG Logo */}
+          {/* Center: LIG Logo */}
           <a
             href="/"
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl md:text-4xl font-black tracking-tighter"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           >
-            360
+            <img src="/images/360inc_logo.png" alt="360Inc." className="h-[55px] md:h-[77px] w-auto object-contain" />
           </a>
 
           {/* Right: Blog & Contact */}
