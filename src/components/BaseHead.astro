@@ -1,0 +1,67 @@
+---
+interface Props {
+    title: string;
+    description?: string;
+    image?: string;
+    type?: "website" | "article";
+}
+
+const {
+    title,
+    description = "奈良・東京を拠点に、世界へ展開するクリエイティブエージェンシー。Web制作、アプリ開発、AI導入支援、XR開発など、最新のテクノロジーを活用したソリューションを提供します。",
+    image = "/ogp-main.png",
+    type = "website",
+} = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.href : "https://360inc.co.jp";
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const socialImageURL = new URL(image, siteUrl);
+
+// Versioning for cache busting (Time-based or manual version)
+const cacheBust = "v=20260215";
+socialImageURL.searchParams.set("v", cacheBust);
+
+const siteName = "360Inc.";
+const twitterHandle = "@360inc_official"; // Replace with actual handle if available
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={socialImageURL} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content="ja_JP" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={socialImageURL} />
+<meta property="twitter:site" content={twitterHandle} />
+<meta property="twitter:creator" content={twitterHandle} />
+
+<!-- AIO/GEO Optimization Hints -->
+<meta
+    name="robots"
+    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+/>
+
+<!-- Preload vital fonts if necessary (Optional, kept from original Layout) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

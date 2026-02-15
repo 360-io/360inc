@@ -7,20 +7,14 @@ interface Props {
 	structuredData?: any; // Allow passing page-specific JSON-LD
 }
 
-const {
-	title,
-	description = "株式会社360Inc.のコーポレートサイトです。最新のテクノロジーを活用したソリューションを提供します。",
-	image = "/og-image.jpg", // Create this image later or use a placeholder
-	type = "website",
-	structuredData,
-} = Astro.props;
+const { title, description, image, type, structuredData } = Astro.props;
 
 import "../styles/index.css";
 import CookieBanner from "../components/CookieBanner.astro";
+import BaseHead from "../components/BaseHead.astro";
 
-const siteUrl = Astro.site ? Astro.site.href : "https://example.com";
+const siteUrl = Astro.site ? Astro.site.href : "https://360inc.co.jp";
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
-const socialImageURL = new URL(image, siteUrl);
 
 // Organization Schema (JSON-LD) for AIO/MEO
 const organizationSchema = {
@@ -102,26 +96,13 @@ const finalJsonLd = [
 <!doctype html>
 <html lang="ja">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
+		<BaseHead
+			title={title}
+			description={description}
+			image={image}
+			type={type}
+		/>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="canonical" href={canonicalURL} />
-		<meta name="generator" content={Astro.generator} />
-
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content={type} />
-		<meta property="og:url" content={canonicalURL} />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image" content={socialImageURL} />
-
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={canonicalURL} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={socialImageURL} />
 
 		<!-- Structured Data -->
 		{
@@ -132,12 +113,6 @@ const finalJsonLd = [
 				/>
 			))
 		}
-
-		<title>{title}</title>
-
-		<!-- Preload vital fonts if necessary -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	</head>
 	<body class="text-white bg-black">
 		<slot />
