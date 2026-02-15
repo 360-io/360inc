@@ -14,6 +14,7 @@ const {
 } = Astro.props;
 
 import "../styles/index.css";
+import CookieBanner from "../components/CookieBanner.astro";
 
 const siteUrl = Astro.site ? Astro.site.href : "https://example.com";
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
@@ -70,6 +71,7 @@ const organizationSchema = JSON.stringify({
 	</head>
 	<body class="text-white bg-black">
 		<slot />
+		<CookieBanner />
 	</body>
 </html>
 

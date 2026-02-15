@@ -1,0 +1,299 @@
+---
+// src/components/CookieBanner.astro
+---
+
+{/* Cookie Consent Banner Component - Vanilla JS & CSS Ver. */}
+<div
+    id="cb-modal"
+    class="cb-wrapper"
+    style="display: none;"
+    role="dialog"
+    aria-live="polite"
+    aria-label="Cookie Consent"
+>
+    <div class="cb-card">
+        <div class="cb-content">
+            <p class="cb-text">
+                当サイトでは、ユーザー体験の向上のためにCookieを使用します。
+                詳細は
+                <a href="/privacy-policy/" class="cb-link">
+                    プライバシーポリシー
+                </a>
+                をご確認ください。
+            </p>
+        </div>
+
+        <div class="cb-actions">
+            <button
+                id="cb-deny"
+                class="cb-btn-deny"
+                aria-label="Decline cookies"
+            >
+                拒否する
+            </button>
+            <button
+                id="cb-accept"
+                class="cb-btn-accept"
+                aria-label="Accept cookies"
+            >
+                同意する
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Base Wrapper Styles */
+    .cb-wrapper {
+        position: fixed;
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+        z-index: 9999;
+        opacity: 0; /* 初期状態: 透明 */
+        transform: translateY(20px); /* 初期状態: 下にずらす */
+        transition:
+            opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1),
+            transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+        pointer-events: none; /* 非表示時はクリック不可 */
+    }
+
+    /* Is Visible State */
+    .cb-wrapper.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    /* Responsive Positioning */
+    @media (min-width: 768px) {
+        .cb-wrapper {
+            bottom: 2rem;
+            left: 50%;
+            right: auto;
+            transform: translate(-50%, 20px); /* PC初期: 中央下 + ずらし */
+            width: auto;
+            max-width: 48rem; /* 幅を広げてテキストの余裕を持たせる */
+        }
+        .cb-wrapper.is-visible {
+            transform: translate(-50%, 0); /* PC表示: 中央下 */
+        }
+    }
+
+    /* Card Styles */
+    .cb-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding: 1.25rem 1.5rem; /* パディングを微調整 */
+        border-radius: 1rem;
+
+        /* Dark Glassmorphism - Enhanced Visibility */
+        background-color: rgba(5, 5, 5, 0.7); /* 透明度を下げて背景を透かす */
+        backdrop-filter: blur(24px); /* ブラーをさらに強化（スリガラス効果） */
+        border: 2px solid rgba(255, 255, 255, 0.15); /* 枠線を2pxに太く */
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6); /* シャドウを調整 */
+    }
+
+    @media (min-width: 768px) {
+        .cb-card {
+            flex-direction: row;
+            gap: 3rem; /* テキストとボタンの間隔を広げる */
+        }
+    }
+
+    .cb-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        text-align: left;
+        width: 100%;
+    }
+    @media (min-width: 768px) {
+        .cb-content {
+            width: auto;
+            flex: 1; /* PC時はテキストエリアを広げる */
+        }
+    }
+
+    .cb-text {
+        font-size: 0.9rem; /* 文字サイズを少し大きく */
+        font-weight: 500;
+        color: #e4e4e7; /* text-zinc-200: 文字色を明るく */
+        line-height: 1.5;
+        letter-spacing: 0.02em; /* 字間を少し空けて読みやすく */
+        word-break: keep-all; /* 日本語の単語途中での改行を防ぐ */
+        overflow-wrap: anywhere;
+    }
+
+    .cb-link {
+        color: white;
+        font-weight: 600; /* リンクを太字に */
+        text-decoration: underline;
+        text-decoration-color: rgba(255, 255, 255, 0.4);
+        text-underline-offset: 4px;
+        transition: all 0.2s;
+    }
+    .cb-link:hover {
+        text-decoration-color: white;
+        color: #fff;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* ホバー時に発光 */
+    }
+
+    .cb-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        justify-content: flex-end;
+    }
+    @media (min-width: 768px) {
+        .cb-actions {
+            width: auto;
+            justify-content: flex-start;
+            flex-shrink: 0; /* ボタンエリアが潰れないように */
+        }
+    }
+
+    /* Buttons */
+    .cb-btn-deny {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #a1a1aa; /* text-zinc-400 */
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem 0.75rem;
+        transition: color 0.2s;
+    }
+    .cb-btn-deny:hover {
+        color: white;
+    }
+
+    .cb-btn-accept {
+        background-color: white;
+        color: black;
+        font-size: 0.875rem;
+        font-weight: 700;
+        padding: 0.75rem 2rem;
+        border-radius: 9999px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.15); /* 常時少し発光 */
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+    }
+    .cb-btn-accept:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.4); /* ホバー時に強い発光 */
+    }
+    .cb-btn-accept:active {
+        transform: scale(0.95);
+    }
+
+    /* Hidden Helper */
+    .hidden {
+        display: none;
+    }
+    @media (min-width: 768px) {
+        .md\:block {
+            display: block;
+        }
+    }
+</style>
+
+<script is:inline>
+    (function () {
+        // --- Constants ---
+        var STORAGE_KEY = "site_consent_status";
+        var BANNER_ID = "cb-modal";
+        var ACCEPT_BTN_ID = "cb-accept";
+        var DENY_BTN_ID = "cb-deny";
+
+        // --- Core Logic ---
+        function initBanner() {
+            var banner = document.getElementById(BANNER_ID);
+            var acceptBtn = document.getElementById(ACCEPT_BTN_ID);
+            var denyBtn = document.getElementById(DENY_BTN_ID);
+
+            if (!banner || !acceptBtn || !denyBtn) {
+                // console.warn("CookieBanner: Elements not found");
+                return;
+            }
+
+            // 1. Check Consent
+            var hasConsent = false;
+            try {
+                if (localStorage.getItem(STORAGE_KEY)) {
+                    hasConsent = true;
+                }
+            } catch (e) {
+                // Access denied
+            }
+
+            if (hasConsent) {
+                return;
+            }
+
+            // 2. Show Banner (Step 1: Display Block)
+            // Force display block to ensure rendering
+            banner.style.display = "block";
+
+            // 3. Animate In (Step 2: Add Class after delay)
+            // Small timeout to allow browser to render 'display: block' first
+            setTimeout(function () {
+                banner.classList.add("is-visible");
+            }, 1500); // 1.5s delay as requested
+
+            // --- Interaction Handlers ---
+            function handleAction(status) {
+                // Animate Out
+                banner.classList.remove("is-visible");
+
+                // Wait for CSS transition to finish before hiding
+                setTimeout(function () {
+                    banner.style.display = "none";
+                }, 600); // Match CSS transition duration (0.6s recommended for out)
+
+                // Save status
+                try {
+                    localStorage.setItem(STORAGE_KEY, status);
+                } catch (e) {}
+
+                // GTM Logic
+                if (typeof window.gtag === "function") {
+                    window.gtag("consent", "update", {
+                        ad_storage: status,
+                        ad_user_data: status,
+                        ad_personalization: status,
+                        analytics_storage: status,
+                    });
+                }
+                if (window.dataLayer) {
+                    window.dataLayer.push({ event: "consent_updated" });
+                }
+            }
+
+            // Bind Events
+            acceptBtn.onclick = function () {
+                handleAction("granted");
+            };
+            denyBtn.onclick = function () {
+                handleAction("denied");
+            };
+        }
+
+        // --- Execution Strategy ---
+        // 1. Immediate
+        initBanner();
+
+        // 2. On Load
+        window.addEventListener("load", initBanner);
+
+        // 3. Astro View Transitions
+        document.addEventListener("astro:page-load", initBanner);
+    })();
+</script>
