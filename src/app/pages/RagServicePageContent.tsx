@@ -12,7 +12,6 @@ import {
     Check,
     Bot,
     FileText,
-    Calculator,
     ChevronRight,
     Lock,
     Cpu,
@@ -22,6 +21,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BackToTopButton } from "../components/BackToTopButton";
 import { BackLinkButton } from "../components/BackLinkButton";
+import { ComparisonTable } from "../components/rag/ComparisonTable";
+import { ROICalculator } from "../components/rag/ROICalculator";
 
 // --- Components ---
 
@@ -124,64 +125,20 @@ function LiveRagDemo() {
     );
 }
 
-function RoiCalculator() {
-    const [employees, setEmployees] = useState(50);
-    // Logic: 5 searches/day * 10 mins saved = 50 mins/day. 
-    // Annual: 50 * 240 days = 12,000 mins = 200 hours/year/person.
-    // Total hours: employees * 200.
-    const hoursSaved = employees * 200;
-    const costSaved = (hoursSaved * 3000).toLocaleString(); // Assume 3000 JPY/hour
 
-    return (
-        <div className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12">
-            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                <Calculator className="w-6 h-6 text-cyan-400" />
-                Cost Savings Calculator
-            </h3>
 
-            <div className="mb-12">
-                <div className="flex justify-between mb-4">
-                    <label className="text-gray-300">従業員数</label>
-                    <span className="text-2xl font-bold text-white">{employees} <span className="text-sm font-normal text-gray-400">名</span></span>
-                </div>
-                <input
-                    type="range"
-                    min="1"
-                    max="1000"
-                    step="1"
-                    value={employees}
-                    onChange={(e) => setEmployees(Number(e.target.value))}
-                    className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
-                />
-            </div>
+function FloatingCta({ visible }: { visible: boolean }) {
+    if (!visible) return null;
 
-            <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-[#0A192F] p-6 rounded-2xl border border-cyan-500/20 text-center">
-                    <p className="text-sm text-gray-400 mb-2">年間削減時間</p>
-                    <p className="text-4xl font-bold text-cyan-400">{hoursSaved.toLocaleString()} <span className="text-lg">時間</span></p>
-                </div>
-                <div className="bg-[#0A192F] p-6 rounded-2xl border border-cyan-500/20 text-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-yellow-400/5" />
-                    <p className="text-sm text-gray-400 mb-2">年間削減コスト想定</p>
-                    <p className="text-3xl md:text-4xl font-bold text-yellow-400">¥{costSaved}</p>
-                    <p className="text-[10px] text-gray-600 mt-2">※時給3,000円換算</p>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-function FloatingCta() {
     return (
         <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3 }}
-            className="fixed bottom-6 right-6 z-50 hidden md:block"
+            className="fixed bottom-6 right-6 z-50 hidden md:block" // Keep simplified layout for mobile
         >
-            <a href="#contact" className="flex items-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-[#0A192F] font-bold py-4 px-8 rounded-full shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all hover:scale-105">
+            <a href="#contact" className="flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-4 px-8 rounded-full shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all hover:scale-105 border border-white/20">
                 <Bot className="w-6 h-6" />
-                <span>デモを予約する</span>
+                <span>まずは5分で終わる無料診断から</span>
             </a>
         </motion.div>
     );
@@ -191,6 +148,7 @@ function FloatingCta() {
 
 export function RagServicePageContent() {
     const containerRef = useRef<HTMLDivElement>(null);
+    const [showBanner, setShowBanner] = useState(false);
 
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -211,7 +169,7 @@ export function RagServicePageContent() {
     return (
         <PageWrapper>
             <div ref={containerRef} className="bg-[#0A192F] text-white font-sans selection:bg-cyan-500/30 min-h-screen relative overflow-hidden">
-                <FloatingCta />
+                <FloatingCta visible={showBanner} />
 
                 {/* Backgrounds */}
                 <div className="fixed inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-900/20 via-[#0A192F] to-[#0A192F] -z-10" />
@@ -291,12 +249,20 @@ export function RagServicePageContent() {
                         </div>
 
                         {/* ROI Calculator */}
-                        <div className="reveal-section max-w-4xl mx-auto">
+
+
+                        {/* Comparison Table */}
+                        <div className="reveal-section mb-32">
+                            <ComparisonTable />
+                        </div>
+
+                        {/* ROI Calculator */}
+                        <div className="reveal-section max-w-5xl mx-auto">
                             <div className="text-center mb-12">
                                 <h2 className="text-3xl md:text-5xl font-bold mb-4">See the Impact</h2>
                                 <p className="text-gray-400">検索時間が減れば、創造する時間が増える。</p>
                             </div>
-                            <RoiCalculator />
+                            <ROICalculator onCalculate={() => setShowBanner(true)} />
                         </div>
 
                         {/* Pricing Plans */}
