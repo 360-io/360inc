@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import App from "../app/App";
+import SeoLayer from "../components/SeoLayer.astro";
 ---
 
 <Layout
@@ -8,6 +9,10 @@ import App from "../app/App";
     description="株式会社三六〇(360Inc.)は、最先端のデジタルソリューションを提供するクリエイティブエージェンシーです。"
 >
     <main>
+        <SeoLayer
+            pageTitle="想"
+            pageDescription="人を想い　世界を想い　宇宙を想う 360はデジタルで”想”を実現します"
+        />
         <App client:only="react" />
     </main>
 </Layout>

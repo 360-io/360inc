@@ -4,6 +4,7 @@ interface Props {
 	description?: string;
 	image?: string;
 	type?: "website" | "article";
+	structuredData?: any; // Allow passing page-specific JSON-LD
 }
 
 const {
@@ -11,6 +12,7 @@ const {
 	description = "株式会社360Inc.のコーポレートサイトです。最新のテクノロジーを活用したソリューションを提供します。",
 	image = "/og-image.jpg", // Create this image later or use a placeholder
 	type = "website",
+	structuredData,
 } = Astro.props;
 
 import "../styles/index.css";
@@ -21,19 +23,80 @@ const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 const socialImageURL = new URL(image, siteUrl);
 
 // Organization Schema (JSON-LD) for AIO/MEO
-const organizationSchema = JSON.stringify({
+const organizationSchema = {
 	"@context": "https://schema.org",
 	"@type": "Organization",
 	name: "360Inc.",
 	url: siteUrl,
 	logo: new URL("/logo.png", siteUrl).href,
+	description:
+		"奈良・東京を拠点に、世界へ展開するクリエイティブエージェンシー。Web制作、アプリ開発、AI導入支援、XR開発。",
+	address: {
+		"@type": "PostalAddress",
+		addressLocality: "Nara",
+		addressRegion: "Nara",
+		addressCountry: "JP",
+	},
 	contactPoint: {
 		"@type": "ContactPoint",
-		telephone: "+81-3-xxxx-xxxx",
+		telephone: "+81-742-xx-xxxx",
 		contactType: "customer service",
+		areaServed: ["JP", "US", "Global"],
+		availableLanguage: ["Japanese", "English"],
 	},
-	sameAs: ["https://twitter.com/example", "https://facebook.com/example"],
-});
+	sameAs: [
+		"https://twitter.com/360inc_official",
+		"https://facebook.com/360inc_official",
+	],
+};
+
+const websiteSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	url: siteUrl,
+	name: "360Inc. Corporate Site",
+	potentialAction: {
+		"@type": "SearchAction",
+		target: `${siteUrl}?q={search_term_string}`,
+		"query-input": "required name=search_term_string",
+	},
+};
+
+// Breadcrumb List
+const breadcrumbSchema = {
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	itemListElement: [
+		{
+			"@type": "ListItem",
+			position: 1,
+			name: "Home",
+			item: siteUrl,
+		},
+		// Dynamically add current page if not home
+		...(Astro.url.pathname !== "/"
+			? [
+					{
+						"@type": "ListItem",
+						position: 2,
+						name: title,
+						item: canonicalURL.href,
+					},
+				]
+			: []),
+	],
+};
+
+const finalJsonLd = [
+	organizationSchema,
+	websiteSchema,
+	breadcrumbSchema,
+	...(structuredData
+		? Array.isArray(structuredData)
+			? structuredData
+			: [structuredData]
+		: []),
+];
 ---
 
 <!doctype html>
@@ -61,7 +124,14 @@ const organizationSchema = JSON.stringify({
 		<meta property="twitter:image" content={socialImageURL} />
 
 		<!-- Structured Data -->
-		<script type="application/ld+json" set:html={organizationSchema} />
+		{
+			finalJsonLd.map((schema) => (
+				<script
+					type="application/ld+json"
+					set:html={JSON.stringify(schema)}
+				/>
+			))
+		}
 
 		<title>{title}</title>
 
