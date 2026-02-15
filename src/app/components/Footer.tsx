@@ -14,6 +14,7 @@ export function Footer() {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-gray-500">
           <div className="flex flex-col md:flex-row gap-6 items-center">
             <a href="/privacy-policy/" className="hover:text-white transition-colors whitespace-nowrap">プライバシーポリシー</a>
+            <a href="/security-policy/" className="hover:text-white transition-colors whitespace-nowrap">情報セキュリティポリシー</a>
             <a href="/legal/" className="hover:text-white transition-colors whitespace-nowrap">特定商取引法に基づく表記</a>
           </div>
           <p>© 2026 360Inc. All rights reserved.</p>
